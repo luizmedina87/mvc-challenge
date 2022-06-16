@@ -12,7 +12,7 @@ Post.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
-// Comment-User-Post associations
+// Comment-User association
 User.hasMany(Comment, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
@@ -23,6 +23,7 @@ Comment.belongsTo(User, {
   onDelete: "SET NULL",
 });
 
+// Post-Comment association
 Post.hasMany(Comment, {
   foreignKey: "user_id",
   onDelete: "SET NULL",
