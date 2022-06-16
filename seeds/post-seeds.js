@@ -1,284 +1,115 @@
-const { Comment } = require("../models");
+const { Post } = require("../models");
 
-const commentdata = [
+const postdata = [
   {
-    comment_text: "Nunc rhoncus dui vel sem.",
-    user_id: 6,
-    post_id: 1,
+    title: "Donec posuere metus vitae ipsum.",
+    post_url: "https://buzzfeed.com/in/imperdiet/et/commodo/vulputate.png",
+    user_id: 10,
   },
   {
-    comment_text:
-      "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-    user_id: 6,
-    post_id: 8,
+    title: "Morbi non quam nec dui luctus rutrum.",
+    post_url: "https://nasa.gov/donec.json",
+    user_id: 8,
   },
   {
-    comment_text: "Aliquam erat volutpat. In congue.",
-    user_id: 3,
-    post_id: 10,
-  },
-  {
-    comment_text:
-      "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    user_id: 3,
-    post_id: 18,
-  },
-  {
-    comment_text: "In hac habitasse platea dictumst.",
-    user_id: 7,
-    post_id: 5,
-  },
-  {
-    comment_text: "Vivamus vestibulum sagittis sapien.",
+    title:
+      "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
+    post_url:
+      "https://europa.eu/parturient/montes/nascetur/ridiculus/mus/etiam/vel.aspx",
     user_id: 1,
-    post_id: 20,
   },
   {
-    comment_text:
-      "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
-    user_id: 6,
-    post_id: 7,
+    title: "Nunc purus.",
+    post_url: "http://desdev.cn/enim/blandit/mi.jpg",
+    user_id: 4,
   },
   {
-    comment_text: "Sed vel enim sit amet nunc viverra dapibus.",
+    title: "Pellentesque eget nunc.",
+    post_url: "http://google.ca/nam/nulla/integer.aspx",
     user_id: 7,
-    post_id: 4,
   },
   {
-    comment_text:
-      "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.",
-    user_id: 6,
-    post_id: 12,
-  },
-  {
-    comment_text: "Morbi a ipsum.",
-    user_id: 6,
-    post_id: 20,
-  },
-  {
-    comment_text:
-      "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
-    user_id: 3,
-    post_id: 14,
-  },
-  {
-    comment_text: "Donec ut mauris eget massa tempor convallis.",
-    user_id: 5,
-    post_id: 4,
-  },
-  {
-    comment_text:
-      "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",
+    title: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    post_url: "https://stanford.edu/consequat.png",
     user_id: 4,
-    post_id: 9,
   },
   {
-    comment_text:
-      "Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    user_id: 5,
-    post_id: 14,
-  },
-  {
-    comment_text: "Quisque porta volutpat erat.",
-    user_id: 6,
-    post_id: 2,
-  },
-  {
-    comment_text: "Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-    user_id: 8,
-    post_id: 2,
-  },
-  {
-    comment_text:
-      "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
-    user_id: 2,
-    post_id: 20,
-  },
-  {
-    comment_text:
-      "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",
-    user_id: 4,
-    post_id: 11,
-  },
-  {
-    comment_text:
-      "Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
-    user_id: 5,
-    post_id: 13,
-  },
-  {
-    comment_text:
-      "Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
-    user_id: 9,
-    post_id: 16,
-  },
-  {
-    comment_text: "Curabitur convallis.",
-    user_id: 6,
-    post_id: 4,
-  },
-  {
-    comment_text:
-      "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    user_id: 4,
-    post_id: 10,
-  },
-  {
-    comment_text: "Morbi non quam nec dui luctus rutrum.",
-    user_id: 3,
-    post_id: 8,
-  },
-  {
-    comment_text:
-      "Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique.",
-    user_id: 8,
-    post_id: 10,
-  },
-  {
-    comment_text:
-      "Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+    title: "In hac habitasse platea dictumst.",
+    post_url: "http://edublogs.org/non/ligula/pellentesque.js",
     user_id: 1,
-    post_id: 15,
   },
   {
-    comment_text:
-      "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend.",
-    user_id: 5,
-    post_id: 3,
-  },
-  {
-    comment_text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    title: "Morbi non quam nec dui luctus rutrum.",
+    post_url: "http://ucla.edu/consequat/nulla.html",
     user_id: 1,
-    post_id: 15,
   },
   {
-    comment_text: "Nam tristique tortor eu pede.",
-    user_id: 4,
-    post_id: 16,
+    title: "Duis ac nibh.",
+    post_url: "http://theguardian.com/dui/vel/nisl/duis/ac/nibh.aspx",
+    user_id: 9,
   },
   {
-    comment_text:
-      "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
-    user_id: 4,
-    post_id: 18,
+    title: "Curabitur at ipsum ac tellus semper interdum.",
+    post_url: "https://reverbnation.com/ligula/sit.jpg",
+    user_id: 5,
   },
   {
-    comment_text: "Proin eu mi. Nulla ac enim.",
-    user_id: 4,
-    post_id: 10,
-  },
-  {
-    comment_text: "Sed ante. Vivamus tortor.",
-    user_id: 7,
-    post_id: 5,
-  },
-  {
-    comment_text: "Aliquam quis turpis eget elit sodales scelerisque.",
-    user_id: 10,
-    post_id: 1,
-  },
-  {
-    comment_text: "Donec quis orci eget orci vehicula condimentum.",
+    title: "In hac habitasse platea dictumst.",
+    post_url: "http://china.com.cn/lectus/vestibulum.json",
     user_id: 3,
-    post_id: 19,
   },
   {
-    comment_text: "Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    user_id: 5,
-    post_id: 3,
-  },
-  {
-    comment_text:
-      "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst.",
+    title: "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",
+    post_url:
+      "http://networksolutions.com/nam/ultrices/libero/non/mattis/pulvinar.json",
     user_id: 10,
-    post_id: 14,
   },
   {
-    comment_text: "Maecenas ut massa quis augue luctus tincidunt.",
-    user_id: 10,
-    post_id: 8,
-  },
-  {
-    comment_text: "Cras in purus eu magna vulputate luctus.",
-    user_id: 10,
-    post_id: 11,
-  },
-  {
-    comment_text: "Etiam vel augue. Vestibulum rutrum rutrum neque.",
+    title: "Donec dapibus.",
+    post_url: "https://instagram.com/ac/neque/duis/bibendum/morbi/non.xml",
     user_id: 8,
-    post_id: 5,
   },
   {
-    comment_text: "Proin at turpis a pede posuere nonummy.",
-    user_id: 8,
-    post_id: 19,
+    title: "Nulla tellus.",
+    post_url: "https://lycos.com/natoque/penatibus/et.html",
+    user_id: 3,
   },
   {
-    comment_text:
-      "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
-    user_id: 9,
-    post_id: 19,
+    title:
+      "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",
+    post_url: "https://gmpg.org/lorem.jpg",
+    user_id: 3,
   },
   {
-    comment_text:
-      "Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.",
-    user_id: 5,
-    post_id: 4,
-  },
-  {
-    comment_text:
-      "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",
-    user_id: 2,
-    post_id: 11,
-  },
-  {
-    comment_text: "Vestibulum ac est lacinia nisi venenatis tristique.",
-    user_id: 4,
-    post_id: 6,
-  },
-  {
-    comment_text: "Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    user_id: 9,
-    post_id: 6,
-  },
-  {
-    comment_text:
-      "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.",
+    title:
+      "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",
+    post_url: "https://paginegialle.it/mattis/egestas.jsp",
     user_id: 7,
-    post_id: 9,
   },
   {
-    comment_text: "Integer ac leo. Pellentesque ultrices mattis odio.",
+    title: "In hac habitasse platea dictumst.",
+    post_url: "http://wikia.com/turpis/eget.jpg",
+    user_id: 6,
+  },
+  {
+    title: "Etiam justo.",
+    post_url: "https://shareasale.com/quis.json",
     user_id: 4,
-    post_id: 19,
   },
   {
-    comment_text:
-      "Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
-    user_id: 10,
-    post_id: 1,
+    title: "Nulla ut erat id mauris vulputate elementum.",
+    post_url:
+      "http://java.com/diam/neque/vestibulum/eget/vulputate/ut/ultrices.png",
+    user_id: 6,
   },
   {
-    comment_text:
-      "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.",
-    user_id: 2,
-    post_id: 19,
-  },
-  {
-    comment_text: "Proin risus. Praesent lectus.",
-    user_id: 10,
-    post_id: 1,
-  },
-  {
-    comment_text:
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus.",
-    user_id: 10,
-    post_id: 12,
+    title:
+      "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+    post_url: "https://java.com/at/nibh/in.png",
+    user_id: 7,
   },
 ];
 
-const seedComments = () => {
-  Comment.bulkCreate(commentdata);
-};
+const seedPosts = () => Post.bulkCreate(postdata);
 
-module.exports = seedComments;
+module.exports = seedPosts;
