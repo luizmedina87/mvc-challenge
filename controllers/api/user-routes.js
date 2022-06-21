@@ -46,7 +46,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// posting users
+// posting users (creates a session, since the user is signing up.)
 router.post("/", (req, res) => {
   // expects {"username":"John Doe", "password":"12345"}
   User.create({
@@ -68,7 +68,7 @@ router.post("/", (req, res) => {
 });
 
 // logging in users
-router.post("/", (req, res) => {
+router.post("/login", (req, res) => {
   // expects {"username": "Don Juan", "password": "12345"}
   User.findOne({ where: { username: req.body.username } })
     .then((dbUserData) => {
