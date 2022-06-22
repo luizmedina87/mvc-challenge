@@ -51,10 +51,10 @@ router.get("/", (req, res) => {
 
 // making a new post
 router.post("/", withAuth, (req, res) => {
-  // expects {"title": "some title", "post_url": "https://mvcchallenge.com/test", "user_id": 1}
+  // expects {"title": "some title", "post_text": "https://mvcchallenge.com/test", "user_id": 1}
   Post.create({
     title: req.body.title,
-    post_url: req.body.post_url,
+    post_text: req.body.post_text,
     user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
