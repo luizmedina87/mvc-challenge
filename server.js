@@ -12,11 +12,13 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 // making .env variables available
 require("dotenv").config();
 
+// session expires after a minute of inactivity
 const sess = {
   secret: process.env.SESSION_SECRET,
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
+  cookie: {expires: 60 * 1000},
+  resave: true,
+  rolling: true,
+  saveUninitialized: false,
   store: new SequelizeStore({
     db: sequelize,
   }),
@@ -26,7 +28,7 @@ app.use(session(sess));
 
 const helpers = require("./utils/helpers");
 const hbs = exphbs.create({ helpers });
-const routes = require("./controllers")
+const routes = require("./controllers");
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
