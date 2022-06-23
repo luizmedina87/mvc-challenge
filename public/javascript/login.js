@@ -16,7 +16,8 @@ async function loginFormHandler(event) {
 
     if (response.ok) {
       // takes you to the dashboard
-      document.location.replace("/");
+      alert("it worked");
+      document.location.replace("/dashboard/");
     } else {
       // deals with errors
       alert(response.statusText);
@@ -26,9 +27,7 @@ async function loginFormHandler(event) {
 
 async function signupFormHandler(event) {
   event.preventDefault();
-
   const username = document.querySelector("#username-signup").value.trim();
-  // const email = document.querySelector("#email-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
 
   if (username && password) {
@@ -36,7 +35,6 @@ async function signupFormHandler(event) {
       method: "post",
       body: JSON.stringify({
         username,
-        // email,
         password,
       }),
       headers: { "Content-Type": "application/json" },
@@ -44,7 +42,7 @@ async function signupFormHandler(event) {
 
     if (response.ok) {
       // after signing up, it takes you to the dashboard
-      document.location.replace("/");
+      document.location.replace("/dashboard/");
     } else {
       // if something doesn't work, it raises an error
       alert(response.statusText);
