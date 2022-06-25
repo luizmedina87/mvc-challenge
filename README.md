@@ -18,7 +18,7 @@ Luiz Medina
 https://github.com/luizmedina87
 
 ## Demo
-![project demo](https://github.com/luizmedina87/mvc-challenge/blob/main/https://github.com/luizmedina87/mvc-challenge/blob/main/assets/gif/demo.gif)
+![project demo](https://github.com/luizmedina87/mvc-challenge/blob/main/assets/gif/demo.gif)
 
 ## License
 https://opensource.org/licenses/MIT
