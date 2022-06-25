@@ -42,6 +42,15 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+// allows the user to signup
+router.get("/signup", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("signup");
+});
+
 // gets data for one post
 router.get("/post/:id", (req, res) => {
   Post.findOne({
